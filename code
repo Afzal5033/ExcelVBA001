@@ -1,0 +1,29 @@
+Sub InOneRaw()
+
+If Range("B1") = "" Then
+    MsgBox ("There is not data")
+   Else
+   Selection.End(xlUp).Select
+    Range("A2:B2").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    ActiveSheet.Next.Select
+    Range("A1").Select
+    ActiveCell.FormulaR1C1 = "ANN No"
+    Range("B1").Select
+    ActiveCell.Formula = "Mobile Number"
+    If Range("A2") = "" Then
+    Range("A2").Select
+    Else
+    Range("A2").Select
+    Selection.End(xlDown).Select
+    End If
+
+    ActiveSheet.Paste
+    ActiveSheet.Previous.Select
+    Columns("B:B").Select
+    Selection.Delete shift:=xlToLeft
+   End If
+   end sub
+   
